@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="iframe.css">
+</head>
+<body>
+    <header>
+        <div id="menu" onclick="menuzar()">
+            <div id="linha1"></div>
+            <div id="linha2"></div>
+            <div id="linha3"></div>
+        </div>
+        <span><h1>Atividades do Silvo</h1></span>
+        <div id="caixa">
+            <a href="1 - DisciplinaEscolar2.html" target="frame" onclick="sair()">Disciplina Escolar</a>
+            <a href="2 - Imposto_de_Renda.html" target="frame" onclick="sair()">Imposto de Renda</a>
+            <a href="3 - Fabrica.html" target="frame" onclick="sair()">Fabrica</a>
+            <a href="4 - Avaliação_de_Aluno.html" target="frame" onclick="sair()">Avaliação de Aluno</a>
+            <a href="5 - Recrutamento.html" target="frame" onclick="sair()" >Recrutamento</a>
+        </div>
+    </header>
+    <main>
+        <iframe src="1 - DisciplinaEscolar2.html" frameborder="0" width="100%" height="415px" name="frame"></iframe>
+    </main>
+    <footer></footer>
+    <script>
+        function menuzar(){
+            var caixa = document.getElementById("caixa")
+            var linha1 = document.getElementById("linha1")
+            var linha2 = document.getElementById("linha2")
+            var linha3 = document.getElementById("linha3")
+
+            if(linha2.style.opacity == 1 || linha2.style.opacity === ""){
+            linha2.style.opacity = 0;
+            linha1.style.transform = "rotate(45deg) translateY(-2px) translateX(-5px)";
+            linha3.style.transform ="rotate(-45deg)";
+            caixa.style.marginLeft = "-30px"
+            caixa.style.opacity = 1
+            }
+            else{
+                linha2.style.opacity = 1;
+                linha1.style.transform = "rotate(0deg) translateY(0px) translateX(0px)";
+                linha3.style.transform ="rotate(0deg)";
+                caixa.style.marginLeft = "-250px"
+                caixa.style.opacity = 0
+            }
+        }
+        function sair(){
+            linha2.style.opacity = 1;
+            linha1.style.transform = "rotate(0deg) translateY(0px) translateX(0px)";
+            linha3.style.transform ="rotate(0deg)";
+            caixa.style.marginLeft = "-250px"
+            caixa.style.opacity = 0
+        }
+    </script>
+</body>
+</html>

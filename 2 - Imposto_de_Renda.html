@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 2</title>
+</head>
+<style>
+    button{
+    border: none;
+    background-color: rgb(70, 152, 70);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.464);
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+    transition-property: transform, background-color;
+    }
+    button:hover{
+        transform: scale(1.1);
+        background-color: rgb(93, 217, 93);
+    }
+    section{
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    background-color: bisque;
+    width: 290px;
+    }
+</style>
+<body>
+    <section>
+        <h1>Tal da Aliquota</h1>
+        <button onclick="comecar()">Começar</button>
+        <p id="nome">Nome do Contribuinte:</p>
+        <p id="cpf">CPF do Contribuinte:</p>
+        <p id="num_dep">Número de Dependentes:</p>
+        <p id="renda_ano">Renda Anual sem Descontos:</p>
+        <p id="aliq">Porcentagem da Aliquota:</p>
+        <p id="dep_des">Desconto Total por Dependentes:</p>
+        <p id="renda2">Renda Anual com Descontos:</p>
+    </section>
+    
+    
+    <script>
+        function comecar(){
+            let nome = prompt("Digite o nome do contribuinte");
+            let cpf = prompt("Digite o CPF do contribuinte");
+            let renda = Number(prompt("Digite a renda anual"));
+            let dependentes = Number(prompt("Digite o número de dependentes"));
+            let dep_des = dependentes * 110;
+            let renda2 = 0;
+            let aliq = "";
+
+            renda2 = renda - dep_des;
+
+            if (renda2 < 501) {
+                aliq = "Isento";
+            } else if (renda2 < 5001) {
+                aliq = "5%";
+            } else if (renda2 < 10001) {
+                aliq = "10%";
+            } else if (renda2 >= 10001) {
+                aliq = "15%";
+            } else {
+                aliq = "Entrada Inválida.";
+            }
+            if(dependentes != NaN){
+                document.getElementById("num_dep").innerHTML ="entrada invalida";
+            }
+
+            document.getElementById("nome").innerHTML = "Nome do Contribuinte: " + nome + "<br>";
+            document.getElementById("cpf").innerHTML = "CPF do Contribuinte: " + cpf + "<br>";
+            document.getElementById("renda_ano").innerHTML = "Renda Anual sem Descontos: " + renda + "<br>";
+            document.getElementById("num_dep").innerHTML = "Número de Dependentes: " + dependentes + "<br>";
+            document.getElementById("aliq").innerHTML = "Porcentagem da Aliquota: " + aliq + "<br>";
+            document.getElementById("dep_des").innerHTML = "Desconto Total por Dependentes: " + dep_des + "<br>";
+            document.getElementById("renda2").innerHTML = "Renda Anual com Descontos: " + renda2 + "<br>";
+        }
+    </script>
+</body>
+</html>

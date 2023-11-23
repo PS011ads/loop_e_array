@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4</title>
+    <style>
+        section{
+    
+        text-align: center;
+        margin: auto;
+        padding: 20px;
+        background-color: bisque;
+        width: 300px;
+        }
+        button{
+        border: none;
+        background-color: rgb(70, 152, 70);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.464);
+        padding: 5px;
+        color: white;
+        border-radius: 5px;
+        transition-duration: 0.3s;
+        transition-property: transform, background-color;
+        }
+        button:hover{
+        transform: scale(1.1);
+        background-color: rgb(93, 217, 93);
+        }
+
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Cadastrar Nota Das 3 Provas</h1>
+        <div id="espaco"></div>
+        <p>Media da turma: <span id="media_turma"></span></p>
+        <p>Maior media: <span id="maiormedia"></span></p>
+        <p>Menor media: <span id="menormedia"></span></p>
+        <hr>
+        <p>Quantidade de Alunos Aprovados: <span id="alunoaprovado"></span></p>
+        <p>Quantidade de Alunos Reprovados: <span id="alunoreprovado"></span></p>
+        <button onclick="ir()">Começar</button>
+    </section>
+    <script>
+
+        
+
+//         A avaliação de um aluno nas disciplinas de uma escola segue os critérios:
+// a) em toda disciplina são aplicadas três provas;
+// b) a média final é obtida com a média aritmética das três notas;
+// c) para que o aluno seja aprovado, a sua média deverá ser igual ou superior a 7,0 e ter
+// a frequência mínima de 80% das 32 aulas ministradas.
+// Faça um algoritmo para:
+// a) ler os números das matrículas de 70 alunos, as três notas de cada um e o número de
+// aulas frequentadas por eles;
+// b) calcular e imprimir o número da matrícula do aluno, a sua média final e o resultado
+// (se aprovado ou não);
+// c) imprimir a média da turma, a maior e a menor média da turma de alunos;
+// d) imprimir o total de alunos aprovados;
+// e) imprimir o total de alunos reprovados por falta e por nota.
+        function ir(){
+            let frequencia = 0;
+            let media = 0;
+            let situacao = "";
+            let media_turma = 0;
+            let q = 0;
+            let maiormedia = -1;
+            let menormedia = 11;
+            let alunoaprovado = 0;
+            let alunoreprovado = 0;
+
+        for (let aluno = 1; aluno < 3; aluno++) {
+            let matricula = Number(prompt("Qual o numero da matricula " +aluno+ "?" ));
+            let nota1 = Number(prompt("Digite a Primeira Nota:"));
+            let nota2 = Number(prompt("Digite a Segunda Nota"));
+            let nota3 = Number(prompt("Digite a Terceira Nota"));
+            let frequencia = Number(prompt("Aulas Frequentadas em Porcentagem"))
+            let media_final = (nota1 + nota2 + nota3) / 3
+            media_turma = media_turma + media_final
+            q = q + 1
+            
+            if (situacao == "aprovado") {
+                alunoaprovado = alunoaprovado + 1
+            } else {
+                alunoreprovado = alunoreprovado + 1
+            }
+            if (media_final > 6 && frequencia > 79) {
+                situacao = "aprovado"
+            } else {
+                situacao = "reprovado"
+            }
+            if (media_final > maiormedia) {
+                maiormedia = media_final
+            }
+            if (media_final < menormedia) {
+                menormedia = media_final
+            }
+            
+
+            document.getElementById("espaco").innerHTML += "Numero da matricula do aluno: " + matricula + "." + "<br>" + "<br>" + "Media final do aluno: " + media_final.toFixed(1) + "." + "<br>" + "<br>" + "Situação: " + situacao + "." + "<br>" + "<hr>" + "<br>"
+        }
+            media_turma = media_turma / q
+            document.getElementById("media_turma").innerHTML = media_turma.toFixed(1)
+            document.getElementById("maiormedia").innerHTML = maiormedia.toFixed(1);
+            document.getElementById("menormedia").innerHTML = menormedia.toFixed(1);
+
+            document.getElementById("alunoaprovado").innerHTML = alunoaprovado
+            document.getElementById("alunoreprovado").innerHTML = alunoreprovado
+        }
+
+
+    </script>
+</body>
+
+</html>

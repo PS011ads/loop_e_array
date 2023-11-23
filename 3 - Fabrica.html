@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;1,300&family=Oswald:wght@500&display=swap');
+        section{
+        text-align: center;
+        margin: auto;
+        padding: 20px;
+        background-color: bisque;
+        width: 300px;
+        }
+        p{
+            font-family: 'Nunito', sans-serif;
+        }
+        button{
+            border: none;
+            background-color: rgb(70, 152, 70);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.464);
+            padding: 5px;
+            color: white;
+            border-radius: 5px;
+            transition-duration: 0.3s;
+            transition-property: transform, background-color;
+        }
+        button:hover{
+            transform: scale(1.1);
+            background-color: rgb(93, 217, 93);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <p>cadastrar peças</p>
+        <button onclick="ir()">Cadastrar</button>
+        <div id="espaco"></div>
+    </section>
+</body>
+<script>
+    function ir(){
+        let peca = 0;
+        while(peca < 400){
+            peca = Number(prompt("Numero da peça"))
+            let qualidade = Number(prompt("[1] - Aprovada\n[0] - Reprovada"))
+            if(qualidade == 1){
+                document.getElementById("espaco").innerHTML += "<hr><br>Peça: " +peca+ "<br>Situação: Aprovada";
+            }
+            else if(qualidade == 0){
+                document.getElementById("espaco").innerHTML += "<hr><br>Peça: " +peca+ "<br>Situação: Reprovada";
+            }
+            else{
+                document.getElementById("espaco").innerHTML = "<hr>Entrada Invalida";
+            }
+        }
+    }
+</script>
+</html>

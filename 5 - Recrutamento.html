@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 5</title>
+    <style>
+        section{
+    
+            text-align: center;
+            margin: auto;
+            padding: 20px;
+            background-color: bisque;
+            width: 300px;
+        }
+        button{
+            border: none;
+            background-color: rgb(70, 152, 70);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.464);
+            padding: 5px;
+            color: white;
+            border-radius: 5px;
+            transition-duration: 0.3s;
+            transition-property: transform, background-color;
+        }
+        button:hover{
+            transform: scale(1.1);
+            background-color: rgb(93, 217, 93);
+        }
+        #tela2{
+            display: none;
+            text-align: center;
+            margin: auto;
+            padding: 20px;
+            background-color: bisque;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <p>Deseja Fazer o Cadastro de Candidatos?</p>
+        <input id="sim" type="radio" name="escolha"><label for="sim">Sim</label><br>
+        <input id="nao" type="radio" name="escolha"><label for="nao">Nao</label><br>
+        <button onclick="enviar()">Avançar</button><br><br>
+        <div id="textos">
+            <p>Média de idade dos candidatos: <span id="media_idade"></span></p>
+            <p>Total de candidatos inscritos: <span id="qntd_cand"></span></p>
+            <p>Total de candidatos homens inscritos: <span id="male_cand"></span></p>
+            <p>Total de candidatas mulheres inscritas: <span id="female_cand"></span></p>
+            <p>Candidatos maiores de idade com experiência profissional: <span id="aprovados"></span></p>
+        </div>
+    </section>
+    <div id="tela2">
+        <p>Nenhum Candidato Foi Cadastrado</p>
+    </div>
+    <script>
+        function enviar() {
+            const RadioSim = document.getElementById("sim");
+            if (RadioSim.checked) {
+                let total_cand = 0;
+                let homem = 0;
+                let mulher = 0;
+                let media_idade = 0;
+                let qntd_cand = 0;
+                let pergunta = 1;
+                while (pergunta == 1) {
+                    let num_cand = Number(prompt("Digite o número do candidato"));
+                    let idade = Number(prompt("Digite a idade do candidato"));
+                    let sexo_cand = parseInt(prompt("Digite o sexo do candidato\n[1] - Masculino\n[0] - Feminino"));
+                    let exp_cand = parseInt(prompt("O candidato tem experiência profissional?\n[1] - Sim\n[0] - Não"));
+                    pergunta = prompt("Cadastrar Mais Candidatos?\n[1] - Sim\n[0] - Não");
+                    if (sexo_cand === 1) {
+                        homem = homem + 1;
+                    } else if (sexo_cand === 0) {
+                        mulher = mulher + 1;
+                    }
+                    if (idade > 17 && exp_cand === 1) {
+                        document.getElementById("aprovados").textContent += num_cand + " ";
+                    }
+                    media_idade = media_idade + idade;
+                    qntd_cand = qntd_cand + 1;
+                }
+                media_idade = media_idade / qntd_cand;
+                document.getElementById("media_idade").textContent = media_idade.toFixed(2);
+                document.getElementById("qntd_cand").textContent = qntd_cand;
+                document.getElementById("male_cand").textContent = homem;
+                document.getElementById("female_cand").textContent = mulher;
+            }
+            else{
+                let tela2 = document.getElementById("tela2")
+                let tela = document.querySelector("section")
+                tela.style.display = "none"
+                tela2.style.display = "block"
+                
+            }
+        }
+    </script>
+</body>
+</html>

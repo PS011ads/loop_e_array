@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luizado</title>
+    <link rel="stylesheet" href="disciplina.css">
+    <link rel="shortcut icon" href="FogueteVoante-removebg-preview_resized.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <section>
+            <p>Deseja cadastrar disciplinas? </p>
+            <input id="sim" type="radio" name="escolha"></input><label for="sim">Sim</label><br>
+            <input id="nao" type="radio" name="escolha"></input><label for="nao">Nao</label><br>
+            <button onclick="enviar()">Avançar</button><br><br>
+            <div id="tabela"></div>
+        </section>
+    </main>
+    <script>
+
+    function enviar(){
+        const RadioSim = document.getElementById("sim")
+        if(RadioSim.checked){
+           let pergunta = 1
+            while (pergunta == 1) {
+                let nome = prompt("Digite o nome da disciplina");
+                let descricao = prompt("Digite a descrição do conteúdo da disciplina");
+                let frequencia = prompt("Digite a frequência na matéria");
+                let nota = prompt("Digite a nota mínima para aprovação do aluno na matéria");
+                pergunta = Number(prompt("Deseja registrar mais disciplinas?\n[1] - continuar\n[0] - sair"));
+                const tabela = document.getElementById("tabela").innerHTML += "<hr><br>Nome da Disciplina: "+nome+"<br>Descrição da Disciplina: "+descricao+"<br>Frequencia na Materia: "+frequencia+"<br>Nota Minima Para Aprovação: "+nota;
+            }
+        }
+        else{
+            document.getElementById("tabela").innerHTML = "Nenhum Conteudo Foi Adicionado";
+        }
+    }
+    </script>
+</body>
+</html>
